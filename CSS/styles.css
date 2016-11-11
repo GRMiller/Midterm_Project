@@ -1,0 +1,9 @@
+.seat {
+	height: 50px;
+	width:50px;
+}
+
+.available {
+	background-color: #2e4629;
+	display:inline-block;
+}
