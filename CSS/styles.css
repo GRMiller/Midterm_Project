@@ -9,7 +9,12 @@
 	max-width: 900px;
 }
 .available {
-	background-color: #2e4629;
+	background-color: #8d929b;
 	display:inline-block;
+}
+
+
+.reserved {
+	background-color: #8c1d0e;
 }
 
