@@ -42,7 +42,7 @@ $('.chair').on('click', function (){
 
 	if ($('available')) {              //maybe ($(this).hasClass('available'))
 		reservedSeats.push (new Seat (seatNumber));
-		// $(this).css(backgroundColor, "#2e4629")
+		$(this).removeClass('available').addClass('taken');
 	} else if ($('taken')) {
 		prompt("This seat is already taken. Please choose another seat")
 	};
@@ -63,7 +63,7 @@ function reserveSeat(name, seatNumber, email) {
 	
 	for (var i = 0; i < reservedSeats.length; i++) { //LOOP THROUGH PROPERTIES OF OBJECTS IN CART
 		
-		// if (reservedSeats[i].seatNumber === seatNumber) {	//TO CHECK FOR DUPLICATE ITEMS
+		{	//TO CHECK FOR DUPLICATE ITEMS
 			reservedSeats[i].name = this.name;			//ADD NAME TO OBJECT
 			reservedSeats[i].email = this.email;	
 			
@@ -72,8 +72,10 @@ function reserveSeat(name, seatNumber, email) {
 
 	}	//END LOOP
 ; //END FUNCTION
+};
+$('reserveBtn').on('click', reserveSeat(name, seatNumber, email))
 
-$('reserveBtn').on('click', reserveSeat(name, seatNumber, email)) 
+
 //listReservedSeats()
 	//ON CLICK OF "reserveBtn" DISPLAY RESERVED SEATS & FORM for USER INPUT
 		//This is where we could include totalPrice from shopping cart
@@ -87,10 +89,9 @@ $('reserveBtn').on('click', reserveSeat(name, seatNumber, email))
 
 
 //removeReservedSeat ()
-
-function removeReservedSeatAll () {
-	var reservedSeats = [];
-};
+	// function removeReservedSeatAll () {
+	// 	var reservedSeats = [];
+	// };
 
 
 

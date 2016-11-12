@@ -14,7 +14,8 @@
 }
 
 
-.reserved {
+.taken{
 	background-color: #8c1d0e;
+	display:inline-block;
 }
 
