@@ -1,9 +1,15 @@
-.seat {
+.chair {
 	height: 50px;
-	width:50px;
+	width:10%;
+	margin: 1%;
 }
 
+.container {
+	margin: auto;
+	max-width: 900px;
+}
 .available {
 	background-color: #2e4629;
 	display:inline-block;
 }
+
