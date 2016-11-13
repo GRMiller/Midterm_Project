@@ -47,7 +47,9 @@ for (var i = 1; i <= 8; i++) {
 
 var reservedSeats = [];
 var seatNumber = []
-
+var email;
+var name;
+var seatNumber;
 
 
 
@@ -56,10 +58,9 @@ var seatNumber = []
 
 var Seat = function (seatNumber) {		//DECLARE CONSTRUCTOR OBJECT
 
-	// this.name = name;										
+	this.name = name;										
 	this.seatNumber = seatNumber;
-	// this.price = Number(price); //USE OUR SHOPPING CART  SCRIPTS TO ADD TOTAL
-	// this.qty = seatNumber.length;
+	this.email = email;
 };
 
 
@@ -67,47 +68,83 @@ var Seat = function (seatNumber) {		//DECLARE CONSTRUCTOR OBJECT
 
 
 //MAKE FUNCTION THAT LETS USER CHOOSE SEAT. 
-	//IF SEAT IS AVAILABLE GENERATE FORM FOR USER INPUT
+	//IF SEAT IS AVAILABLE CHANGE CLASS TO TAKEN
 	//IF SEAT IS UNAVAILABLE PROMPT MESSAGE SEAT TAKEN
 
-$('.chair').on('click', function (){
+$('.available').on('click', function (){
 	
 	var seatNumber = $(this).attr('id');
 
-	if ($('available')) {              //maybe ($(this).hasClass('available'))
-		reservedSeats.push (new Seat (seatNumber));
-		$(this).removeClass('available').addClass('taken');
-	} else if ($('taken')) {
-		prompt("This seat is already taken. Please choose another seat")
-	};
+	$(this).removeClass('available').addClass('taken');
+
+	
+ 
+ 	for (var i = 0; i < reservedSeats.length; i++) {
+ 		if (reservedSeats[i].seatNumber === seatNumber) {
+ 			alert("This seat is already taken. Please choose another seat.");
+ 			return;
+ 		}
+ 		
+ 	}
+	
+	reservedSeats.push (new Seat (seatNumber));
 });
 
 
 
 
 
+// on click of "reserveBtn" Generate form for user input and display seats with "taken class"
+	$('.reserveBtn').on('click', function () { 	//choose selector and event to trigger event
+
+		for (var i = 0; i < reservedSeats.length; i++) {
+ 			var elSelectedSeats = document.getElementById('selected_seats');
+ 			elSelectedSeats.appendChild(reservedSeats[i].seatNumber)
+
+		}
+	});
+		// for (var i = 0; i < reservedSeats.length; i++) {
+		// reservedSeats.forEach(function () {
+
+		// 	var elSelectedSeats = document.getElementById('selected_seats');
+
+		// 	elSelectedSeats.appendChild(reservedSeats[i].seatNumber); //to get the value of seatNumber and then append to page
+		// 	});
+		// }
+	
+	
+		//get seats that have class taken (or are in array)
+		//display seats that have class taken (or are in array)
+		//display form and submit button
+		//close, provide confirmation, and push name and e-mail into array on click of submit btn
+
+
+
+
+
+
 //reserveSeat ()
-	//ON CLICK OF "seat open" PUSH RESERVED SEATS INTO ARRAY
+	//ON CLICK OF "submitBtn" PUSH RESERVED SEATS INTO ARRAY
 
-var email;
-function reserveSeat(name, seatNumber, email) {
+// var email;
+// function reserveSeat(name, seatNumber, email) {
 	
-	var name = document.getElementById("Name").text;
-	var email = document.getElementById("Email").text;
+// 	var name = document.getElementById("Name").text;
+// 	var email = document.getElementById("Email").text;
 	
-	for (var i = 0; i < reservedSeats.length; i++) { //LOOP THROUGH PROPERTIES OF OBJECTS IN CART
+// 	for (var i = 0; i < reservedSeats.length; i++) { //LOOP THROUGH PROPERTIES OF OBJECTS IN CART
 		
-		{	//TO CHECK FOR DUPLICATE ITEMS
-			reservedSeats[i].name = this.name;			//ADD NAME TO OBJECT
-			reservedSeats[i].email = this.email;	
+// 		{	//TO CHECK FOR DUPLICATE ITEMS
+// 			reservedSeats[i].name = this.name;			//ADD NAME TO OBJECT
+// 			reservedSeats[i].email = this.email;	
 			
-			return; //STOP LOOP AND ACT
-		}	//END FUNCTION when IF = TRUE
+// 			return; //STOP LOOP AND ACT
+// 		}	//END FUNCTION when IF = TRUE
 
-	}	//END LOOP
-; //END FUNCTION
-};
-$('reserveBtn').on('click', reserveSeat(name, seatNumber, email))
+// 	}	//END LOOP
+//  //END FUNCTION
+// };
+
 
 
 //listReservedSeats()
