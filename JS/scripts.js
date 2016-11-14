@@ -12,16 +12,16 @@ for (var i = 1; i <= 4; i++) {
 }
 
 // ROW 2
-for (var i = 1; i <= 6; i++) {
+for (var i = 5; i <= 10; i++) {
    var seatChart = document.getElementById('seating_chart1');
    var newDiv = document.createElement('div');
    newDiv.id = 'seat' + i;
-   newDiv.className = "chair available";
+   newDiv.className = "chair available ";
    seatChart.appendChild(newDiv);
 }
 
 // ROW 3
-for (var i = 1; i <= 6; i++) {
+for (var i = 11; i <= 16; i++) {
    var seatChart = document.getElementById('seating_chart2');
    var newDiv = document.createElement('div');
    newDiv.id = 'seat' + i;
@@ -30,7 +30,7 @@ for (var i = 1; i <= 6; i++) {
 }
 
 // ROW 4
-for (var i = 1; i <= 8; i++) {
+for (var i = 17; i <= 24; i++) {
    var seatChart = document.getElementById('seating_chart3');
    var newDiv = document.createElement('div');
    newDiv.id = 'seat' + i;
@@ -38,14 +38,16 @@ for (var i = 1; i <= 8; i++) {
    seatChart.appendChild(newDiv);
 }
 
-
 // END SEATING CHART LOOP
 
 
 
-// MAKE ARRAY TO STORE RESERVED SEATS
 
+
+// DECLARE VARIABLES 
 var reservedSeats = [];
+
+var seatNumbers = [];
 var email;
 var name;
 var seatNumber;
@@ -53,41 +55,50 @@ var seatNumber;
 
 
 
-//USE CONSTRUCTOR TO MAKE OBJECT FOR reservedSeats 
 
-var Seat = function (seatNumber) {		//DECLARE CONSTRUCTOR OBJECT
 
-	this.name = name;										
+//CONSTRUCTOR OBJECTS
+var Seat = function (name, seatNumber, email) {		//DECLARE CONSTRUCTOR OBJECT
+
+										
+	this.seatNumber = seatNumber;
+	
+};
+
+
+var CustomerReservation = function (name, seatNumber, email) {
+
+	this.name = name;
 	this.seatNumber = seatNumber;
 	this.email = email;
 };
 
 
 
-
-
-//MAKE FUNCTION THAT LETS USER CHOOSE SEAT. 
-	//IF SEAT IS AVAILABLE CHANGE CLASS TO TAKEN
-	//IF SEAT IS UNAVAILABLE PROMPT MESSAGE SEAT TAKEN
-
+//CHANGE CLASS IF AVAILABLE OR TELL USER SEAT IS UNAVAILABLE 
 $('.available').on('click', function (){
-	
-	var seatNumber = $(this).attr('id');
 
 	$(this).removeClass('available').addClass('taken');
-
-	
  
- 	for (var i = 0; i < reservedSeats.length; i++) {
- 		if (reservedSeats[i].seatNumber === seatNumber) {
- 			alert("This seat is already taken. Please choose another seat.");
+	var seatNumber = $(this).attr('id')
+
+ 	for (var i = 0; i < seatNumbers.length; i++) {
+
+ 		if (seatNumbers[i].seatNumber === seatNumber) {
+ 			alert("Sorry, this seat is taken.");
  			return;
  		}
- 		
  	}
-	
-	reservedSeats.push (new Seat (seatNumber));
+
+	seatNumbers.push (new Seat (name, seatNumber, email)); // Maybe wait to make object tell all info collected
+
 });
+
+// $('.taken').on('click', function () {
+
+// 	alert("This seat is already taken. Please choose another.")
+
+// });
 
 
 // RESERVE AND SUBMIT BUTTONS
@@ -107,66 +118,91 @@ $(document).ready(function(){
   $('.submitBtn').mouseleave(function(){
     $('.submitBtn').fadeTo('slow', 1);
   });
+  var $message = $('#message');
+
+	$('div').mouseenter(function() {
+		if ($(this).hasClass('available')) {
+			$message.text("This seat is available!");
+		} else if ($(this).hasClass('taken')) {
+			$message.text("This seat is already reserved.");
+		}
+	});
+
+	$('div').mouseleave(function() {
+		$message.text("Reserve a seat!");
+	});
  });
 
 // END RESERVE AND SUBMIT BUTTONS
 
 
 
+//CLICK RESERVE BUTTON
+	//Get Reserved Seats arry and display input fields for name and email
 
-// // on click of "reserveBtn" Generate form for user input and display seats with "taken class"
 // 	$('.reserveBtn').on('click', function () { 	//choose selector and event to trigger event
 
 // 		for (var i = 0; i < reservedSeats.length; i++) {
 //  			var elSelectedSeats = document.getElementById('selected_seats');
-//  			var seatNumContainer = document.createElement('div');
-//  			elSelectedSeats.appendChild(reservedSeats[i].seatNumber);
+//  			v
+//  			elSelectedSeats.appendChild(reservedSeats[i].seatNumber)
 
 // 		}
-// 		});
+// 	});
 
 
-		// for (var i = 0; i < reservedSeats.length; i++) {
-		// reservedSeats.forEach(function () {
 
-		// 	var elSelectedSeats = document.getElementById('selected_seats');
 
-		// 	elSelectedSeats.appendChild(reservedSeats[i].seatNumber); //to get the value of seatNumber and then append to page
-		// 	});
-		// }
+
+
+// reserveSeat() on CLICK SUBMIT
+
+function reserveSeat(name, seatNumber, email) {
 	
+	var elname = document.getElementById('user_name');
+	elname.innerHTML = name;
+
+	var elemail = document.getElementById('user_email');
+	elemail.innerHTML = email;
+
+	var seatNumber = seatNumbers;
 	
-		//get seats that have class taken (or are in array)
-		//display seats that have class taken (or are in array)
-		//display form and submit button
-		//close, provide confirmation, and push name and e-mail into array on click of submit btn
-
-
-
-
-
-
-//reserveSeat ()
-	//ON CLICK OF "submitBtn" PUSH RESERVED SEATS INTO ARRAY
-
-// var email;
-// function reserveSeat(name, seatNumber, email) {
+	reservedSeats.push (new CustomerReservation (name, seatNumber, email));
 	
-// 	var name = document.getElementById("Name").text;
-// 	var email = document.getElementById("Email").text;
-	
-// 	for (var i = 0; i < reservedSeats.length; i++) { //LOOP THROUGH PROPERTIES OF OBJECTS IN CART
-		
-// 		{	//TO CHECK FOR DUPLICATE ITEMS
-// 			reservedSeats[i].name = this.name;			//ADD NAME TO OBJECT
-// 			reservedSeats[i].email = this.email;	
-			
-// 			return; //STOP LOOP AND ACT
-// 		}	//END FUNCTION when IF = TRUE
+};
 
-// 	}	//END LOOP
-//  //END FUNCTION
-// };
+$('.submitBtn').on('click', reserveSeat(name, seatNumber, email));
+
+
+
+
+
+
+//BONUS - 
+/*2 ideas: 	1)inside of the reserveSeat function use a setAttribute method 
+			To add attribute of title to images 
+			Title value is user's information 
+			On hover that info will automatically display
+			2)On click of taken div Alert will pop up this seat is reserved by:
+			Function with for each loop runs and finds matching seat number
+			Returns property value of name*/
+
+
+// $('.taken').on('click', function (){
+
+// 	 $(this).;
+ 
+//  	for (var i = 0; i < reservedSeats.length; i++) {
+//  		if (reservedSeats[i].seatNumber === seatNumber) {
+//  			alert("This seat is already taken. Please choose another seat.");
+//  			return;
+//  		}
+//  	}
+// 	// reservedSeats.push (new Seat (seatNumber)); // Maybe wait to make object tell all info collected
+// });
+
+
+
 
 
 
@@ -186,10 +222,3 @@ $(document).ready(function(){
 	// function removeReservedSeatAll () {
 	// 	var reservedSeats = [];
 	// };
-
-
-
-
-//BONUS
-
-//WHEN HOVERING OVER SEAT IN reservedSeats array display Person's Name
