@@ -46,7 +46,6 @@ for (var i = 1; i <= 8; i++) {
 // MAKE ARRAY TO STORE RESERVED SEATS
 
 var reservedSeats = [];
-var seatNumber = []
 var email;
 var name;
 var seatNumber;
@@ -94,15 +93,18 @@ $('.available').on('click', function (){
 
 
 
-// on click of "reserveBtn" Generate form for user input and display seats with "taken class"
-	$('.reserveBtn').on('click', function () { 	//choose selector and event to trigger event
+// // on click of "reserveBtn" Generate form for user input and display seats with "taken class"
+// 	$('.reserveBtn').on('click', function () { 	//choose selector and event to trigger event
 
-		for (var i = 0; i < reservedSeats.length; i++) {
- 			var elSelectedSeats = document.getElementById('selected_seats');
- 			elSelectedSeats.appendChild(reservedSeats[i].seatNumber)
+// 		for (var i = 0; i < reservedSeats.length; i++) {
+//  			var elSelectedSeats = document.getElementById('selected_seats');
+//  			var seatNumContainer = document.createElement('div');
+//  			elSelectedSeats.appendChild(reservedSeats[i].seatNumber);
 
-		}
-	});
+// 		}
+// 		});
+
+
 		// for (var i = 0; i < reservedSeats.length; i++) {
 		// reservedSeats.forEach(function () {
 
