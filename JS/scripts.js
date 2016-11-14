@@ -85,7 +85,7 @@ $('.available').on('click', function (){
  	for (var i = 0; i < seatNumbers.length; i++) {
 
  		if (seatNumbers[i].seatNumber === seatNumber) {
- 			alert("");
+ 			alert("Sorry, this seat is taken");
  			return;
  		}
  	}
@@ -100,6 +100,27 @@ $('.available').on('click', function (){
 
 // });
 
+
+// RESERVE AND SUBMIT BUTTONS
+
+
+$(document).ready(function(){
+
+ $('.reserveBtn').mouseenter(function(){
+    $('.reserveBtn').fadeTo('fast', 0.5);
+  });
+  $('.reserveBtn').mouseleave(function(){
+    $('.reserveBtn').fadeTo('slow', 1);
+  });
+   $('.submitBtn').mouseenter(function(){
+    $('.submitBtn').fadeTo('fast', 0.5);
+  });
+  $('.submitBtn').mouseleave(function(){
+    $('.submitBtn').fadeTo('slow', 1);
+  });
+ });
+
+// END RESERVE AND SUBMIT BUTTONS
 
 
 
@@ -191,9 +212,3 @@ $('.submitBtn').on('click', reserveSeat(name, seatNumber, email));
 	// };
 
 
-
-
-
-
-
-	
