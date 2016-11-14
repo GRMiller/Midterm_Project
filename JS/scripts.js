@@ -46,7 +46,8 @@ for (var i = 17; i <= 24; i++) {
 
 // DECLARE VARIABLES 
 var reservedSeats = [];
-var seatNumber = [];
+
+var seatNumbers = [];
 var email;
 var name;
 var seatNumber;
@@ -56,16 +57,21 @@ var seatNumber;
 
 
 
-//CONSTRUCTOR OBJECT
+//CONSTRUCTOR OBJECTS
 var Seat = function (name, seatNumber, email) {		//DECLARE CONSTRUCTOR OBJECT
 
-	this.name = name;										
+										
 	this.seatNumber = seatNumber;
-	this.email = email;
+	
 };
 
 
+var CustomerReservation = function (name, seatNumber, email) {
 
+	this.name = name;
+	this.seatNumber = seatNumber;
+	this.email = email;
+};
 
 
 
@@ -74,13 +80,18 @@ $('.available').on('click', function (){
 
 	$(this).removeClass('available').addClass('taken');
  
- 	for (var i = 0; i < reservedSeats.length; i++) {
- 		if (reservedSeats[i].seatNumber === seatNumber) {
- 			alert("This seat is already taken. Please choose another seat.");
+	var seatNumber = $(this).attr('id')
+
+ 	for (var i = 0; i < seatNumbers.length; i++) {
+
+ 		if (seatNumbers[i].seatNumber === seatNumber) {
+ 			alert("");
  			return;
  		}
  	}
-	reservedSeats.push (new Seat (seatNumber)); // Maybe wait to make object tell all info collected
+
+	seatNumbers.push (new Seat (name, seatNumber, email)); // Maybe wait to make object tell all info collected
+
 });
 
 // $('.taken').on('click', function () {
@@ -93,7 +104,7 @@ $('.available').on('click', function (){
 
 
 //CLICK RESERVE BUTTON
-	//Form with user's selected seats and input fields for name and email appears
+	//Get Reserved Seats arry and display input fields for name and email
 
 // 	$('.reserveBtn').on('click', function () { 	//choose selector and event to trigger event
 
@@ -104,59 +115,31 @@ $('.available').on('click', function (){
 
 // 		}
 // 	});
-		// for (var i = 0; i < reservedSeats.length; i++) {
-		// reservedSeats.forEach(function () {
-
-		// 	var elSelectedSeats = document.getElementById('selected_seats');
-
-		// 	elSelectedSeats.appendChild(reservedSeats[i].seatNumber); //to get the value of seatNumber and then append to page
-		// 	});
-		// }
-	
-	
-		//get seats that have class taken (or are in array)
-		//display seats that have class taken (or are in array)
-		//display form and submit button
-		//close, provide confirmation, and push name and e-mail into array on click of submit btn
 
 
 
 
 
 
-//reserveSeat() on CLICK SUBMIT
+// reserveSeat() on CLICK SUBMIT
 
 function reserveSeat(name, seatNumber, email) {
 	
-	var name = 'john';
-	var email = 'john@john.com';
-	var seatNumber = $('.taken').attr('id');
+	var elname = document.getElementById('user_name');
+	elname.innerHTML = name;
+
+	var elemail = document.getElementById('user_email');
+	elemail.innerHTML = email;
+
+	var seatNumber = seatNumbers;
 	
-	reservedSeats.push (new Seat (name, seatNumber, email));
+	reservedSeats.push (new CustomerReservation (name, seatNumber, email));
 	
 };
 
 $('.submitBtn').on('click', reserveSeat(name, seatNumber, email));
 
 
-
-
-//listReservedSeats()
-	//ON CLICK OF "reserveBtn" DISPLAY RESERVED SEATS & FORM for USER INPUT
-		//This is where we could include totalPrice from shopping cart
-
-
-
-
-
-//displayConfirmation ()
-	//ON CLICK OF "submitBtn" DISPLAY CONFIRMATION
-
-
-//removeReservedSeat ()
-	// function removeReservedSeatAll () {
-	// 	var reservedSeats = [];
-	// };
 
 
 
@@ -184,6 +167,28 @@ $('.submitBtn').on('click', reserveSeat(name, seatNumber, email));
 //  	}
 // 	// reservedSeats.push (new Seat (seatNumber)); // Maybe wait to make object tell all info collected
 // });
+
+
+
+
+
+
+//listReservedSeats()
+	//ON CLICK OF "reserveBtn" DISPLAY RESERVED SEATS & FORM for USER INPUT
+		//This is where we could include totalPrice from shopping cart
+
+
+
+
+
+//displayConfirmation ()
+	//ON CLICK OF "submitBtn" DISPLAY CONFIRMATION
+
+
+//removeReservedSeat ()
+	// function removeReservedSeatAll () {
+	// 	var reservedSeats = [];
+	// };
 
 
 
