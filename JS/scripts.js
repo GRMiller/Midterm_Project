@@ -44,7 +44,6 @@ for (var i = 17; i <= 24; i++) {
 
 // DECLARE VARIABLES
 var reservedSeats = [];
-
 var seatNumbers = [];
 var email;
 var name;
@@ -83,7 +82,9 @@ $('.available').on('click', function (){
  	for (var i = 0; i < seatNumbers.length; i++) {
 
  		if (seatNumbers[i].seatNumber === seatNumber) {
+
  			alert("Sorry this seatis already taken. Please choose another.");
+
  			return;
  		}
  	}
@@ -92,16 +93,9 @@ $('.available').on('click', function (){
 
 });
 
-// $('.taken').on('click', function () {
-
-// 	alert("This seat is already taken. Please choose another.")
-
-// });
 
 
 // RESERVE AND SUBMIT BUTTONS
-
-
 $(document).ready(function(){
 
  $('.reserveBtn').mouseenter(function(){
@@ -116,14 +110,14 @@ $(document).ready(function(){
   $('.submitBtn').mouseleave(function(){
     $('.submitBtn').fadeTo('slow', 1);
   });
-  
+
   var $message = $('#message');
 
 	$('div').mouseenter(function() {
 		if ($(this).hasClass('available')) {
 			$message.text("This seat is available!");
 		} else if ($(this).hasClass('taken')) {
-			$message.text("Sorry, this seat is reserved for " + reservedSeats[i].name");
+			$message.text("Sorry, this seat is reserved for " + reservedSeats[i].name);
 		}
 	});
 
@@ -174,7 +168,18 @@ $('.submitBtn').on('click', reserveSeat(name, seatNumber, email));
 			Returns property value of name*/
 
 
-// $('.taken').on('click', function (){
 
 
+//listReservedSeats()
+	//ON CLICK OF "reserveBtn" DISPLAY RESERVED SEATS & FORM for USER INPUT
+	
+
+//displayConfirmation ()
+	//ON CLICK OF "submitBtn" DISPLAY CONFIRMATION
+
+
+//removeReservedSeat ()
+	/*function removeReservedSeatAll () {
+	 	var reservedSeats = [];
+	*/
 

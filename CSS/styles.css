@@ -1,5 +1,12 @@
+html {
+	background-color: #e0ebfc;
+}
 body {
 	font-family: 'Muli', sans-serif;
+}
+#curtain {
+	max-width: 900px;
+	height: 60px;
 }
 .logo_container {
 	text-align: center;
@@ -111,5 +118,9 @@ form {
 	text-align: center;
 }
 .confirmation_text {
+	text-align: center;
+}
+
+#message {
 	text-align: center;
 }

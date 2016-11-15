@@ -2,8 +2,6 @@
 <html>
 <!--
 ADD QUESTIONS, COMMENTS, and IDEAS up here
-
-
 	STEPS of PRODUCTION - GARRETT
 	1. MAKE CONTENT FOR HTML
 		- 1 Heading/Title for page
@@ -11,7 +9,6 @@ ADD QUESTIONS, COMMENTS, and IDEAS up here
 		- One Image to go w/ Heading and Paragraph
 		- Seating Chart (with at least 24 Chairs)
 			- Each seat will need to be a separate container
-
 	2. CREATING JAVASCRIPT
 		- Seats begin with "open" class.
 		- When hover over seat, opacity adjusts to lighter color.
@@ -21,10 +18,8 @@ ADD QUESTIONS, COMMENTS, and IDEAS up here
 		- Button somewhere page, when clicked, pops up form asking to confirm reservation for "forReservation" seats and to get Customer information.
 		- On submittal of form confirmation window will pop up
 		- Once seat is reserved it becomes red color and dead link
-
 	3. CSS
 		-
-
 -->
 <head>
 	<title>Reserve Your Seat!</title>
@@ -59,6 +54,8 @@ ADD QUESTIONS, COMMENTS, and IDEAS up here
 <body>
 <div class="container">
 
+<img id="curtain" src="images/curtain.png">
+
 <!-- ALERT BOX -->
 
 
@@ -83,7 +80,9 @@ ADD QUESTIONS, COMMENTS, and IDEAS up here
 				<span>screen</span>
 			</div>
 
+	<!-- 	PICK A SEAT -->
 
+ 	<p id="message">Reserve a seat!</p>
 
 	<!--SEATING CHART - WE WILL SOMEHOW USE A FOR LOOP TO POPULATE THE SEATING CHART DIV WITH 24 SEAT DIVS. FOR NOW LETS TRY TO GET THE SCRIPTS WORKING WITH JUST ONE DIV-->
 
@@ -110,6 +109,36 @@ ADD QUESTIONS, COMMENTS, and IDEAS up here
 
 
 
+<<<<<<< HEAD
+=======
+
+<!-- THIS WOULD BE A TABLE IF WE WANT TO SHOW A LIST WITH SEATS CHOSEN
+	<div class="seat_output">
+		<h2>Your Seats</h2>
+	</div>
+	<div class="table_container">
+		<table>
+			<thead>
+			</thead>
+			<tbody>
+			</tbody>
+			<tfoot>
+			</tfoot>
+		</table>
+	</div> <!END "table_container"-->
+
+
+
+
+<!--BUTTON TO RESERVE SEATS AND GENERATE FORM FOR USER INFO-->
+	<button type="button" class="btn btn-primary reserveBtn">
+		Reserve Your Seats
+	</button>
+
+
+
+
+>>>>>>> 139a7d7312a4a7231cc0d2fb64f19ce2b15b2c57
 <!--FORM FOR USER INPUT & SUBMIT BUTTON-->
 	<div id="selected_seats">
 
