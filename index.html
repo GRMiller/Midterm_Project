@@ -34,13 +34,24 @@ ADD QUESTIONS, COMMENTS, and IDEAS up here
 	<meta charset="utf-8"/>
 	<meta name="viewport" content ="width=device-width, initial-scale=1"/>
 
-	<!--INSERT CSS-->
-	<link type="text/css" rel="stylesheet" href="css/styles.css" />
-	</head>
 	<!-- FONT -->
 	<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+	<!--INSERT CSS-->
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<!-- <link rel="stylesheet" type="text/css" href="plugins/jquery-ui.theme.css" /> -->
+	<link type="text/css" rel="stylesheet" href="css/styles.css" />
+
+</head>
+	
+	
 	
 
+	<!--jQUERY UI-->
+	
+
+ 
+  
 
 
 
@@ -63,7 +74,7 @@ ADD QUESTIONS, COMMENTS, and IDEAS up here
 	<div class="title_and_header">
 		<h2>Reserve your seat for The Ramones!</h2>
 
-		<p>Welcome to Grand Circus Theatre!!  To reserve your seating, please select your seat(s) on the chart below.  Then enter your name and e-mail information to confirm your reservation.  You must choose available seats only.  Previously reserved seats will not be available.  You may select up to four seats only per reservation.  Thank you for choosing Grand Circus Theatre.</p>
+		<p>Welcome to Grand Circus Theatre!!  To reserve your seating, please select your seat(s) on the chart below and enter your name and e-mail information to confirm your reservation. You must choose available seats in grey. And you can click on your reserved seats to see your name associated with the seats you reserved! We hope you enjoy the show! </p>
 	</div> <!--END "title_and_header"-->
 
 
@@ -99,38 +110,6 @@ ADD QUESTIONS, COMMENTS, and IDEAS up here
 
 
 
-
-<!-- THIS WOULD BE A TABLE IF WE WANT TO SHOW A LIST WITH SEATS CHOSEN
-
-	<div class="seat_output">
-		<h2>Your Seats</h2>
-	</div>
-
-	<div class="table_container">
-		<table>
-			<thead>
-
-			</thead>
-			<tbody>
-
-			</tbody>
-			<tfoot>
-
-			</tfoot>
-		</table>
-	</div> <!END "table_container"-->
-
-
-
-
-<!--BUTTON TO RESERVE SEATS AND GENERATE FORM FOR USER INFO-->
-	<button type="button" class="btn btn-primary reserveBtn">
-		Reserve Your Seats
-	</button>
-
-
-
-
 <!--FORM FOR USER INPUT & SUBMIT BUTTON-->
 	<div id="selected_seats">
 
@@ -144,7 +123,7 @@ ADD QUESTIONS, COMMENTS, and IDEAS up here
 
 
 	<button type="button" class="btn btn-primary submitBtn">
-		Submit
+		Reserve Your Seats
 	</button>
 
 
@@ -156,7 +135,9 @@ ADD QUESTIONS, COMMENTS, and IDEAS up here
 	</div>
 
 
-
+<div id="dialog" title="Basic dialog">
+  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
 
 </div><!--END "container"-->
 
@@ -164,11 +145,12 @@ ADD QUESTIONS, COMMENTS, and IDEAS up here
 
 
 <!--INSERT SCRIPTS-->
-<script
-  src="https://code.jquery.com/jquery-3.1.1.js"
-  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-  crossorigin="anonymous"></script>
-<!-- <script src="js/jquery-1.11.1.js"></script> -->
+
+
+<script src="js/jquery-1.11.1.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- <script src="plugins/jquery-ui.js" </script> -->
 <script src="js/scripts.js"> </script>
 
 
